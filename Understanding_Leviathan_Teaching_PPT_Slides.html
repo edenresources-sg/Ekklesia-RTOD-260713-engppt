@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Leviathan — Slides</title>
+<style>
+  :root{
+    --navy-dark:#0B1F33;
+    --navy:#0B3D5C;
+    --teal:#1C7293;
+    --gold:#C99A2E;
+    --white:#FFFFFF;
+    --card:#F2F5F7;
+    --text:#1A2430;
+    --muted:#5A6472;
+    --red:#8C2F2F;
+    --serif:Cambria,Georgia,'Times New Roman',serif;
+    --sans:Calibri,'Segoe UI',Candara,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    background:#dde2e7;
+    font-family:var(--sans);
+  }
+  .icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block;}
+  .stage-outer{
+    padding:40px 0 60px;display:flex;flex-direction:column;align-items:center;
+  }
+  .stage{
+    display:flex;flex-direction:column;align-items:center;gap:36px;
+  }
+  .slide{
+    position:relative;width:1280px;height:720px;flex:none;
+    overflow:hidden;border-radius:6px;
+    box-shadow:0 12px 34px rgba(20,30,40,.18);
+  }
+  .slide.dark{background:var(--navy-dark);color:#fff;}
+  .slide.light{background:#fff;color:var(--text);}
+
+  .kicker{position:absolute;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);}
+  .slide.dark .kicker{color:var(--gold);}
+  .title{position:absolute;font-family:var(--serif);font-weight:700;color:var(--navy);}
+  .slide.dark .title{color:#fff;}
+  .pagenum{position:absolute;right:28px;bottom:18px;font-size:12px;color:#B7C2CC;}
+  .slide.dark .pagenum{color:#8AA0B4;}
+
+  .badge{border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;background:var(--navy);color:var(--gold);}
+  .badge.on-dark{background:#13334A;}
+  .badge.teal{background:var(--teal);color:#fff;}
+
+  .card{position:absolute;background:var(--card);border-radius:10px;box-shadow:0 4px 14px rgba(60,70,80,.12);}
+  .card.navy{background:var(--navy);color:#fff;}
+  .card h3{font-family:var(--serif);margin:0;color:var(--navy);}
+  .card.navy h3{color:var(--gold);}
+  .card p{margin:0;color:var(--muted);line-height:1.35;}
+  .card.navy p{color:#D8E3EA;}
+
+  .quote{font-family:var(--serif);font-style:italic;line-height:1.4;}
+  .verse-box{position:absolute;background:var(--navy);color:#fff;border-radius:10px;}
+  .num-badge{position:absolute;font-family:var(--serif);font-weight:700;color:#C9D2D8;text-align:right;}
+
+  ul.dots{list-style:none;margin:0;padding:0;position:absolute;}
+  ul.dots li{position:relative;padding-left:18px;margin-bottom:8px;}
+  ul.dots li::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+  table.compare{border-collapse:collapse;position:absolute;}
+  table.compare th,table.compare td{border:1px solid #E3E7EA;padding:10px 12px;text-align:left;vertical-align:top;}
+  table.compare th{background:var(--navy);color:#fff;font-weight:700;}
+  table.compare th:last-child{background:var(--red);}
+  table.compare td:first-child{font-weight:700;color:var(--navy);background:#EAF0F6;}
+  table.compare td:last-child{background:#FBF1E5;}
+</style>
+</head>
+<body>
+
+<div class="stage-outer">
+  <div class="stage" id="stage">
+
+    <!-- ============ Slide 1: Title ============ -->
+    <section class="slide dark">
+      <svg style="position:absolute;right:60px;top:96px;width:480px;height:480px;opacity:.12;color:#13324c;" viewBox="0 0 24 24"><path d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="#13324c" stroke-width="1"/><path d="M2 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="#13324c" stroke-width="1"/><path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="#13324c" stroke-width="1"/></svg>
+      <div class="kicker" style="left:86px;top:197px;">RTOD Teaching Series · Session One</div>
+      <div class="title" style="left:86px;top:222px;font-size:58px;line-height:1.1;width:900px;">Understanding<br>Leviathan</div>
+      <div class="quote" style="position:absolute;left:86px;top:406px;width:960px;font-size:19px;color:#CADCE8;">Discerning Leviathan and the Python (Serpent) — Overcoming in Truth and Humility, in the Spirit</div>
+      <div style="position:absolute;left:86px;top:474px;font-weight:700;color:var(--gold);font-size:16px;">Speaker: Pastor Daniel Tan (陳添榮牧師)</div>
+      <div style="position:absolute;left:86px;top:622px;font-size:13px;">
+        <span style="font-weight:700;color:var(--gold);">Teaching Outline&nbsp;&nbsp;&nbsp;</span>
+        <span style="color:#9FB3C4;">Compiled from 【RTOD Pure Message】 Understanding Leviathan (13.07.2026)</span>
+      </div>
+    </section>
+
+    <!-- ============ Slide 2: Opening Prayer ============ -->
+    <section class="slide dark">
+      <div class="badge on-dark" style="left:86px;top:82px;width:96px;height:96px;font-size:38px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="12" cy="4" r="2"/><path d="M12 6v4"/><path d="M9 20l2-6h2l2 6"/><path d="M9 12c1-1 2-1.5 3-1.5s2 .5 3 1.5"/></svg></div>
+      <div class="kicker" style="left:202px;top:101px;">Opening Prayer</div>
+      <div class="quote" style="position:absolute;left:96px;top:216px;width:1050px;font-size:27px;color:#fff;">Dear Heavenly Father, we come before You, especially in this season, asking You to give us strategies for warfare and grace for discernment — that we may be rooted in Your truth as we learn to discern spirits and dark powers, to recognize, to break through, and to be freed from every attack of the enemy.</div>
+      <div style="position:absolute;left:96px;top:494px;font-weight:700;color:var(--gold);font-size:19px;">In Jesus' name, Lord, teach us Yourself. Amen.</div>
+      <div class="pagenum">2</div>
+    </section>
+
+    <!-- ============ Slide 3: Introduction ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">I. Introduction</div>
+      <div class="title" style="left:67px;top:82px;font-size:34px;">The Core Purpose of This Session</div>
+      <div style="position:absolute;left:67px;top:168px;width:1142px;font-size:15px;color:var(--muted);">Spiritual warfare and prophetic revelation have rarely been taught systematically in the church setting. Today we focus on one of two dark powers often discussed online but rarely properly addressed in church: Leviathan.</div>
+
+      <div class="card" style="left:67px;top:254px;width:552px;height:173px;">
+        <div class="badge" style="left:27px;top:20px;width:60px;height:60px;font-size:26px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M12 3l7 3v6c0 5-3 8.5-7 9-4-.5-7-4-7-9V6l7-3z"/></svg></div>
+        <h3 style="position:absolute;left:105px;top:14px;font-size:19px;width:420px;">Discerning a Pattern, Not Hunting Witches</h3>
+        <p style="position:absolute;left:105px;top:70px;width:420px;font-size:13.5px;">This session is not meant to train disciples to go around looking for &ldquo;does this person have an evil spirit,&rdquo; but to help us discern a spiritual pattern that recurs throughout Scripture.</p>
+      </div>
+      <div class="card" style="left:657px;top:254px;width:552px;height:173px;">
+        <div class="badge" style="left:27px;top:20px;width:60px;height:60px;font-size:26px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 9a2.5 2.5 0 1 0 0-5"/><path d="M15 14c2.5.3 5 2.2 5 6"/></svg></div>
+        <h3 style="position:absolute;left:105px;top:14px;font-size:19px;width:420px;">Across the Personal, Family, and Church</h3>
+        <p style="position:absolute;left:105px;top:70px;width:420px;font-size:13.5px;">This pattern shows up in personal life, in families, in the church — and also in the political realm, with an influence far beyond what we imagine.</p>
+      </div>
+      <div class="card" style="left:67px;top:451px;width:552px;height:173px;">
+        <div class="badge" style="left:27px;top:20px;width:60px;height:60px;font-size:26px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M12 4L2 20h20L12 4z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg></div>
+        <h3 style="position:absolute;left:105px;top:14px;font-size:19px;width:420px;">Confusion Is Not Merely Interpersonal</h3>
+        <p style="position:absolute;left:105px;top:70px;width:420px;font-size:13.5px;">When words are twisted, relationships torn, pride magnified, and confusion replaces peace, this may well be a spiritual-level attack, not simply a personality clash.</p>
+      </div>
+      <div class="card" style="left:657px;top:451px;width:552px;height:173px;">
+        <div class="badge" style="left:27px;top:20px;width:60px;height:60px;font-size:26px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><line x1="12" y1="3" x2="12" y2="19"/><line x1="4" y1="7" x2="20" y2="7"/><path d="M4 7l-2.5 6a3 3 0 0 0 5 0L4 7z"/><path d="M20 7l-2.5 6a3 3 0 0 0 5 0L20 7z"/><path d="M8 21h8"/></svg></div>
+        <h3 style="position:absolute;left:105px;top:14px;font-size:19px;width:420px;">Positions Have Powers Behind Them</h3>
+        <p style="position:absolute;left:105px;top:70px;width:420px;font-size:13.5px;">Political positions are only the outcome of a spiritual battle; every position has powers of influence behind it, and we need to be especially watchful in discerning this.</p>
+      </div>
+      <div class="pagenum">3</div>
+    </section>
+
+    <!-- ============ Slide 4: Biblical Basis I ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">II. Biblical Basis (Part 1)</div>
+      <div class="title" style="left:67px;top:82px;font-size:31px;">What Is Leviathan? — Job Chapter 41</div>
+      <div style="position:absolute;left:67px;top:173px;width:662px;font-size:14px;color:var(--muted);">The Chinese Union Version does not transliterate &ldquo;Leviathan,&rdquo; so many verses that mention it go unnoticed by Chinese readers. The English Bible, however, lists the word clearly.</div>
+
+      <ul class="dots" style="left:67px;top:288px;width:662px;font-size:14.5px;color:var(--text);">
+        <li style="margin-bottom:58px;">Its scales are &ldquo;shut up together as with a close seal &hellip; joined one to another, they stick together, that they cannot be sundered&rdquo;</li>
+        <li style="margin-bottom:58px;">It &ldquo;beholdeth all high things: he is a king over all the children of pride&rdquo;</li>
+        <li style="margin-bottom:58px;">These descriptions go far beyond an ordinary crocodile — a being that commands the sea</li>
+        <li>Leviathan is &ldquo;a king over all the children of pride&rdquo; — not an ordinary creature</li>
+      </ul>
+
+      <div class="card navy" style="left:758px;top:168px;width:456px;height:442px;">
+        <div class="badge on-dark" style="left:30px;top:32px;width:52px;height:52px;font-size:22px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M4 5c2-1 5-1 8 0v14c-3-1-6-1-8 0V5z"/><path d="M20 5c-2-1-5-1-8 0v14c3-1 6-1 8 0V5z"/></svg></div>
+        <div style="position:absolute;left:95px;top:44px;color:var(--gold);font-family:var(--serif);font-weight:700;font-size:18px;">Job Chapter 41</div>
+        <div class="quote" style="position:absolute;left:30px;top:120px;width:398px;font-size:18px;color:#fff;">&ldquo;He beholdeth all high things: he is a king over all the children of pride&hellip; his scales are his pride, shut up together as with a close seal.&rdquo;</div>
+        <div style="position:absolute;left:30px;top:388px;font-size:13px;color:#9FB3C4;">Job 41:15-17, 33-34</div>
+      </div>
+      <div class="pagenum">4</div>
+    </section>
+
+    <!-- ============ Slide 5: Biblical Basis II ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">II. Biblical Basis (Part 2)</div>
+      <div class="title" style="left:67px;top:82px;font-size:28px;">Isaiah 27:1&nbsp;&nbsp;and&nbsp;&nbsp;Common Spiritual Definitions</div>
+
+      <div class="card" style="left:67px;top:163px;width:1142px;height:144px;">
+        <div class="quote" style="position:absolute;left:30px;top:14px;width:1085px;font-size:17px;color:var(--navy);">&ldquo;In that day the LORD with his sore and great and strong sword shall punish leviathan the piercing serpent, even leviathan that crooked serpent; and he shall slay the dragon that is in the sea.&rdquo;</div>
+        <div style="position:absolute;left:30px;top:104px;font-size:13px;color:var(--muted);">Isaiah 27:1 — the original describes it as a &ldquo;Twisting Serpent,&rdquo; a force that twists truth, communication, and relationships.</div>
+      </div>
+
+      <div class="card navy" style="left:67px;top:341px;width:267px;height:264px;text-align:center;">
+        <div class="badge teal" style="left:103px;top:24px;width:60px;height:60px;font-size:26px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#FFFFFF;fill:none;"><path d="M12 2a6 6 0 1 0 6 6"/><path d="M12 6a2 2 0 1 0 2 2"/></svg></div>
+        <h3 style="position:absolute;left:14px;top:120px;width:239px;font-size:16px;color:var(--gold);">Twisting Serpent</h3>
+        <p style="position:absolute;left:14px;top:160px;width:239px;font-size:12px;">Twists truth, communication, and relationships</p>
+      </div>
+      <div class="card navy" style="left:352px;top:341px;width:267px;height:264px;text-align:center;">
+        <div class="badge teal" style="left:103px;top:24px;width:60px;height:60px;font-size:26px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#FFFFFF;fill:none;"><path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div>
+        <h3 style="position:absolute;left:14px;top:120px;width:239px;font-size:16px;color:var(--gold);">Water / Marine Spirit</h3>
+        <p style="position:absolute;left:14px;top:160px;width:239px;font-size:12px;">Water Spirit / Marine Spirit</p>
+      </div>
+      <div class="card navy" style="left:637px;top:341px;width:267px;height:264px;text-align:center;">
+        <div class="badge teal" style="left:103px;top:24px;width:60px;height:60px;font-size:26px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#FFFFFF;fill:none;"><path d="M4 18h16l-1-9-4 4-3-6-3 6-4-4-1 9z"/></svg></div>
+        <h3 style="position:absolute;left:14px;top:120px;width:239px;font-size:16px;color:var(--gold);">Spiritual Principality</h3>
+        <p style="position:absolute;left:14px;top:160px;width:239px;font-size:12px;">A high-ranking spiritual power</p>
+      </div>
+      <div class="card navy" style="left:922px;top:341px;width:267px;height:264px;text-align:center;">
+        <div class="badge teal" style="left:103px;top:24px;width:60px;height:60px;font-size:26px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#FFFFFF;fill:none;"><path d="M9 15l6-6"/><path d="M8 12l-2 2a3.5 3.5 0 0 0 5 5l2-2"/><path d="M16 12l2-2a3.5 3.5 0 0 0-5-5l-2 2"/></svg></div>
+        <h3 style="position:absolute;left:14px;top:120px;width:239px;font-size:16px;color:var(--gold);">Covenant-Breaking Spirit</h3>
+        <p style="position:absolute;left:14px;top:160px;width:239px;font-size:12px;">Closely tied to pride, chaos, division</p>
+      </div>
+      <div class="pagenum">5</div>
+    </section>
+
+    <!-- ============ Slide 6: King of Pride ============ -->
+    <section class="slide dark">
+      <div class="badge on-dark" style="left:902px;top:134px;width:250px;height:250px;font-size:110px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M4 18h16l-1-9-4 4-3-6-3 6-4-4-1 9z"/></svg></div>
+      <div class="kicker" style="left:67px;top:48px;">The Core of Leviathan</div>
+      <div class="title" style="left:67px;top:82px;font-size:32px;width:770px;">A King Over All the Children of Pride</div>
+      <div style="position:absolute;left:67px;top:154px;color:var(--gold);font-style:italic;font-size:14px;">Job 41:34</div>
+      <div style="position:absolute;left:67px;top:226px;width:730px;font-size:17px;color:#E4ECF2;line-height:1.5;">Leviathan is called &ldquo;the king of all the children of pride&rdquo; — this is the key to understanding it: its essence is pride. When discerning a spiritual attack, ask: what is its nature? Uncleanness? Greed? Pride? Fear? Every dark power's character matches its name — and Leviathan's core is pride.</div>
+      <div style="position:absolute;left:67px;top:432px;width:730px;height:206px;background:#10293D;border:1px solid #234A63;border-radius:10px;">
+        <div class="quote" style="position:absolute;left:30px;top:24px;width:670px;font-size:15px;color:#CADCE8;">Testimony reference: When a certain Satanic cult leader in America was struck down by the Lord, a demon appeared to a pastor and, when asked who it was, answered: &ldquo;I am Leviathan&rdquo; — confirming it as a real, high-ranking spiritual power.</div>
+      </div>
+      <div class="pagenum">6</div>
+    </section>
+
+    <!-- ============ Slide 7: Six Symptoms Overview ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">III. The Main Symptoms of Leviathan</div>
+      <div class="title" style="left:67px;top:82px;font-size:32px;">Six Symptoms Overview</div>
+
+      <div class="card" style="left:67px;top:168px;width:368px;height:202px;">
+        <div class="badge" style="left:24px;top:24px;width:67px;height:67px;font-size:28px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="num-badge" style="right:20px;top:18px;font-size:24px;">01</div>
+        <h3 style="position:absolute;left:24px;top:98px;font-size:16px;width:320px;">Distorts Communication</h3>
+        <p style="position:absolute;left:24px;top:136px;font-size:12px;width:320px;">Well-meant words pass through its filter and come out as hostile accusation</p>
+      </div>
+      <div class="card" style="left:449px;top:168px;width:368px;height:202px;">
+        <div class="badge" style="left:24px;top:24px;width:67px;height:67px;font-size:28px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M4 18h16l-1-9-4 4-3-6-3 6-4-4-1 9z"/></svg></div>
+        <div class="num-badge" style="right:20px;top:18px;font-size:24px;">02</div>
+        <h3 style="position:absolute;left:24px;top:98px;font-size:16px;width:320px;">Pride Is Stirred Up</h3>
+        <p style="position:absolute;left:24px;top:136px;font-size:12px;width:320px;">Refuses correction, extremely defensive, self-righteous</p>
+      </div>
+      <div class="card" style="left:831px;top:168px;width:368px;height:202px;">
+        <div class="badge" style="left:24px;top:24px;width:67px;height:67px;font-size:28px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M9 15l6-6"/><path d="M8 12l-2 2a3.5 3.5 0 0 0 5 5l2-2"/><path d="M16 12l2-2a3.5 3.5 0 0 0-5-5l-2 2"/></svg></div>
+        <div class="num-badge" style="right:20px;top:18px;font-size:24px;">03</div>
+        <h3 style="position:absolute;left:24px;top:98px;font-size:16px;width:320px;">Breaks Covenant Relationships</h3>
+        <p style="position:absolute;left:24px;top:136px;font-size:12px;width:320px;">Marriage, family, pastoral, ministry, prophetic, intercessory teams</p>
+      </div>
+      <div class="card" style="left:67px;top:389px;width:368px;height:202px;">
+        <div class="badge" style="left:24px;top:24px;width:67px;height:67px;font-size:28px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M7 18h10a4 4 0 0 0 0-8 5 5 0 0 0-9.6-1.5A4.5 4.5 0 0 0 7 18z"/></svg></div>
+        <div class="num-badge" style="right:20px;top:18px;font-size:24px;">04</div>
+        <h3 style="position:absolute;left:24px;top:98px;font-size:16px;width:320px;">Produces a Spiritual Fog</h3>
+        <p style="position:absolute;left:24px;top:136px;font-size:12px;width:320px;">Blurred thinking, heavy spirit, hard to pray quietly</p>
+      </div>
+      <div class="card" style="left:449px;top:389px;width:368px;height:202px;">
+        <div class="badge" style="left:24px;top:24px;width:67px;height:67px;font-size:28px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M3 10v4h3l6 4V6l-6 4H3z"/><path d="M14 9a3 3 0 0 1 0 6"/><path d="M17 6a7 7 0 0 1 0 12"/></svg></div>
+        <div class="num-badge" style="right:20px;top:18px;font-size:24px;">05</div>
+        <h3 style="position:absolute;left:24px;top:98px;font-size:16px;width:320px;">Attacks Credibility, Slander</h3>
+        <p style="position:absolute;left:24px;top:136px;font-size:12px;width:320px;">False accusation, quoting out of context, twisted motives</p>
+      </div>
+      <div class="card" style="left:831px;top:389px;width:368px;height:202px;">
+        <div class="badge" style="left:24px;top:24px;width:67px;height:67px;font-size:28px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M12 3l7 3v6c0 5-3 8.5-7 9-4-.5-7-4-7-9V6l7-3z"/></svg></div>
+        <div class="num-badge" style="right:20px;top:18px;font-size:24px;">06</div>
+        <h3 style="position:absolute;left:24px;top:98px;font-size:16px;width:320px;">Traps in Self-Defense</h3>
+        <p style="position:absolute;left:24px;top:136px;font-size:12px;width:320px;">Long-term cycle of proving oneself right</p>
+      </div>
+      <div class="pagenum">7</div>
+    </section>
+
+    <!-- ============ Slide 8: Anatomy of Pride ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">Symptom Focus: Symptom Two</div>
+      <div class="title" style="left:67px;top:82px;font-size:32px;">The Anatomy of Pride</div>
+
+      <div class="verse-box" style="left:67px;top:163px;width:1142px;height:110px;">
+        <div class="quote" style="position:absolute;left:30px;top:16px;width:1085px;font-size:15px;color:#fff;">&ldquo;His scales are his pride, shut up together as with a close seal. One is so near to another, that no air can come between them. They are joined one to another, they stick together, that they cannot be sundered.&rdquo;&nbsp;&nbsp;Job 41:15-17</div>
+      </div>
+
+      <div class="card" style="left:67px;top:302px;width:368px;height:226px;">
+        <h3 style="position:absolute;left:24px;top:20px;font-size:17px;color:var(--gold);width:320px;">Shut Up Together</h3>
+        <p style="position:absolute;left:24px;top:74px;font-size:13px;width:320px;">Refuses correction; an extremely strong self-defense mechanism</p>
+      </div>
+      <div class="card" style="left:449px;top:302px;width:368px;height:226px;">
+        <h3 style="position:absolute;left:24px;top:20px;font-size:17px;color:var(--gold);width:320px;">Joined One to Another</h3>
+        <p style="position:absolute;left:24px;top:74px;font-size:13px;width:320px;">Lies and pride's logic reinforce each other, forming a fortified stronghold</p>
+      </div>
+      <div class="card" style="left:831px;top:302px;width:368px;height:226px;">
+        <h3 style="position:absolute;left:24px;top:20px;font-size:17px;color:var(--gold);width:320px;">No Air Can Come Between</h3>
+        <p style="position:absolute;left:24px;top:74px;font-size:13px;width:320px;">&ldquo;Air&rdquo; represents the Holy Spirit and truth's revelation; pride's scales fully block the Spirit's work</p>
+      </div>
+
+      <div style="position:absolute;left:67px;top:552px;width:1142px;font-size:14px;font-style:italic;color:var(--muted);">Reminder: the environment Leviathan loves is not just quarreling, but pride &ldquo;wrapped in a spiritual coat&rdquo; — truth is truth, regardless of whether you feel &ldquo;spiritual.&rdquo;</div>
+      <div class="pagenum">8</div>
+    </section>
+
+    <!-- ============ Slide 9: Covenant Relationships ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">Symptom Focus: Symptom Three</div>
+      <div class="title" style="left:67px;top:82px;font-size:31px;">Covenant Relationships Leviathan Attacks</div>
+      <div style="position:absolute;left:67px;top:168px;width:1142px;font-size:14px;color:var(--muted);">It delights in division, drawing near to those with authority and position, influencing and undermining from within until trust and covenants completely break down.</div>
+
+      <div class="card" style="left:67px;top:240px;width:368px;height:130px;display:flex;align-items:center;">
+        <div class="badge" style="left:21px;top:38px;width:53px;height:53px;font-size:22px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 9a2.5 2.5 0 1 0 0-5"/><path d="M15 14c2.5.3 5 2.2 5 6"/></svg></div>
+        <div style="position:absolute;left:90px;top:52px;width:250px;font-weight:700;font-size:13.5px;">Marriage</div>
+      </div>
+      <div class="card" style="left:449px;top:240px;width:368px;height:130px;">
+        <div class="badge" style="left:21px;top:38px;width:53px;height:53px;font-size:22px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 9a2.5 2.5 0 1 0 0-5"/><path d="M15 14c2.5.3 5 2.2 5 6"/></svg></div>
+        <div style="position:absolute;left:90px;top:52px;width:250px;font-weight:700;font-size:13.5px;">Family</div>
+      </div>
+      <div class="card" style="left:831px;top:240px;width:368px;height:130px;">
+        <div class="badge" style="left:21px;top:24px;width:53px;height:53px;font-size:22px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 9a2.5 2.5 0 1 0 0-5"/><path d="M15 14c2.5.3 5 2.2 5 6"/></svg></div>
+        <div style="position:absolute;left:90px;top:34px;width:250px;font-weight:700;font-size:13px;">Pastoral relationships (pastor &amp; leaders, leaders &amp; flock)</div>
+      </div>
+      <div class="card" style="left:67px;top:389px;width:368px;height:130px;">
+        <div class="badge" style="left:21px;top:38px;width:53px;height:53px;font-size:22px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 9a2.5 2.5 0 1 0 0-5"/><path d="M15 14c2.5.3 5 2.2 5 6"/></svg></div>
+        <div style="position:absolute;left:90px;top:52px;width:250px;font-weight:700;font-size:13.5px;">Ministry teams</div>
+      </div>
+      <div class="card" style="left:449px;top:389px;width:368px;height:130px;">
+        <div class="badge" style="left:21px;top:24px;width:53px;height:53px;font-size:22px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 9a2.5 2.5 0 1 0 0-5"/><path d="M15 14c2.5.3 5 2.2 5 6"/></svg></div>
+        <div style="position:absolute;left:90px;top:34px;width:250px;font-weight:700;font-size:13px;">Prophetic teams (prophets are human — need to be tested)</div>
+      </div>
+      <div class="card" style="left:831px;top:389px;width:368px;height:130px;">
+        <div class="badge" style="left:21px;top:38px;width:53px;height:53px;font-size:22px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 9a2.5 2.5 0 1 0 0-5"/><path d="M15 14c2.5.3 5 2.2 5 6"/></svg></div>
+        <div style="position:absolute;left:90px;top:52px;width:250px;font-weight:700;font-size:13.5px;">Intercessory teams</div>
+      </div>
+      <div class="card" style="left:67px;top:538px;width:368px;height:130px;">
+        <div class="badge" style="left:21px;top:38px;width:53px;height:53px;font-size:22px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 9a2.5 2.5 0 1 0 0-5"/><path d="M15 14c2.5.3 5 2.2 5 6"/></svg></div>
+        <div style="position:absolute;left:90px;top:44px;width:250px;font-weight:700;font-size:13px;">Relationships among church leaders</div>
+      </div>
+      <div class="pagenum">9</div>
+    </section>
+
+    <!-- ============ Slide 10: Comparison Table ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">IV. How to Discern</div>
+      <div class="title" style="left:67px;top:82px;font-size:32px;">Normal Friction&nbsp;&nbsp;vs&nbsp;&nbsp;Leviathan's Attack</div>
+      <table class="compare" style="left:67px;top:168px;width:1142px;font-size:13.5px;">
+        <colgroup><col style="width:230px"><col style="width:456px"><col style="width:456px"></colgroup>
+        <tr><th>Trait</th><th>Normal Interpersonal Friction</th><th>Leviathan's Pattern</th></tr>
+        <tr><td>Communication</td><td>Occasional miscommunication or misunderstanding</td><td>Words deliberately twisted, motives maliciously assumed</td></tr>
+        <tr><td>Effect of Explaining</td><td>Brings clarity and reconciliation</td><td>The more you explain, the deeper the misunderstanding</td></tr>
+        <tr><td>Path to Resolution</td><td>Sincere apology brings peace and restoration</td><td>Apology invites more accusations, old grievances dredged up</td></tr>
+        <tr><td>Core Attitude</td><td>Willing to reflect, seeks common ground, restores relationship</td><td>Absolute pride, extremely defensive, desperate to prove oneself right</td></tr>
+        <tr><td>Spiritual Atmosphere</td><td>Brief emotional flare-up, followed by peace</td><td>Persistent heaviness, confusion, tearing; unable to pray quietly</td></tr>
+      </table>
+      <div class="pagenum">10</div>
+    </section>
+
+    <!-- ============ Slide 11: Ultimate Purpose ============ -->
+    <section class="slide dark">
+      <div class="badge on-dark" style="left:979px;top:72px;width:96px;height:96px;font-size:40px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M12 4L2 20h20L12 4z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg></div>
+      <div class="kicker" style="left:67px;top:48px;">V. Leviathan's Ultimate Purpose</div>
+      <div class="title" style="left:67px;top:82px;font-size:29px;width:1008px;">Its Goal Is Not Merely to Create Misunderstanding</div>
+
+      <div style="position:absolute;left:67px;top:226px;width:552px;font-size:14px;color:#E4ECF2;">
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">1&nbsp;&nbsp;</span>Destroy covenant relationships</div>
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">3&nbsp;&nbsp;</span>Destroy pastor&ndash;leader relationships</div>
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">5&nbsp;&nbsp;</span>Destroy trust between teams</div>
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">7&nbsp;&nbsp;</span>Destroy the unity of the church</div>
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">9&nbsp;&nbsp;</span>Pollute prophetic voices, making words harsh</div>
+        <div><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">11</span>&nbsp;&nbsp;Slow God's work through internal conflict</div>
+      </div>
+      <div style="position:absolute;left:657px;top:226px;width:552px;font-size:14px;color:#E4ECF2;">
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">2&nbsp;&nbsp;</span>Destroy marriages</div>
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">4&nbsp;&nbsp;</span>Destroy leader&ndash;flock relationships</div>
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">6&nbsp;&nbsp;</span>Destroy relationships between nations</div>
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">8&nbsp;&nbsp;</span>Cause leaders to suspect one another</div>
+        <div style="margin-bottom:37px;"><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">10</span>&nbsp;&nbsp;Trap intercessors in accusation</div>
+        <div><span style="color:var(--gold);font-family:var(--serif);font-weight:700;">12</span>&nbsp;&nbsp;Turn hearts from humility to pride</div>
+      </div>
+      <div style="position:absolute;left:67px;top:629px;width:1142px;font-size:13px;font-style:italic;color:#9FB3C4;">In this end-time season, the enemy attacks prophetic and apostolic messages, ministries, and relationships — once attacked, the advance of God's kingdom is hindered.</div>
+      <div class="pagenum">11</div>
+    </section>
+
+    <!-- ============ Slide 12: Five Keys Overview ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">VI. Keys to Victory</div>
+      <div class="title" style="left:67px;top:82px;font-size:29px;">Five Keys to Overcoming Leviathan</div>
+
+      <div style="position:absolute;left:67px;top:178px;width:213px;height:422px;background:var(--navy);border-radius:10px;color:#fff;text-align:center;">
+        <div style="position:absolute;left:14px;top:14px;font-family:var(--serif);font-weight:700;color:#AFC4D4;font-size:20px;">01</div>
+        <div class="badge on-dark" style="left:66px;top:76px;width:80px;height:80px;font-size:34px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="12" cy="4" r="2"/><path d="M12 6v4"/><path d="M9 20l2-6h2l2 6"/><path d="M9 12c1-1 2-1.5 3-1.5s2 .5 3 1.5"/></svg></div>
+        <div style="position:absolute;left:10px;top:196px;width:193px;font-family:var(--serif);font-weight:700;font-size:16px;">Humility</div>
+      </div>
+      <div style="position:absolute;left:293px;top:178px;width:213px;height:422px;background:var(--teal);border-radius:10px;color:#fff;text-align:center;">
+        <div style="position:absolute;left:14px;top:14px;font-family:var(--serif);font-weight:700;color:#AFC4D4;font-size:20px;">02</div>
+        <div class="badge" style="background:#3E8BA3;left:66px;top:76px;width:80px;height:80px;font-size:34px;color:#fff;"><svg class="icon" viewBox="0 0 24 24" style="fill:#FFFFFF;stroke:none"><path d="M12 21s-7-4.5-9.5-9C1 8 2.5 4.5 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c3.5.5 5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+        <div style="position:absolute;left:10px;top:196px;width:193px;font-family:var(--serif);font-weight:700;font-size:16px;">Bless Instead of Accuse</div>
+      </div>
+      <div style="position:absolute;left:519px;top:178px;width:213px;height:422px;background:var(--navy);border-radius:10px;color:#fff;text-align:center;">
+        <div style="position:absolute;left:14px;top:14px;font-family:var(--serif);font-weight:700;color:#AFC4D4;font-size:20px;">03</div>
+        <div class="badge on-dark" style="left:66px;top:76px;width:80px;height:80px;font-size:34px;"><svg class="icon" viewBox="0 0 24 24" style="fill:#C99A2E;stroke:none"><path d="M12 3c2 3-3 5-3 9a3 3 0 0 0 6 0c0-1.5-1-2.5-1-2.5 1.5 2 .5 4-2 4-2.8 0-5-2.2-5-5C7 6 9 4 12 3z"/></svg></div>
+        <div style="position:absolute;left:10px;top:196px;width:193px;font-family:var(--serif);font-weight:700;font-size:16px;">Stop Feeding the Fire</div>
+      </div>
+      <div style="position:absolute;left:745px;top:178px;width:213px;height:422px;background:var(--teal);border-radius:10px;color:#fff;text-align:center;">
+        <div style="position:absolute;left:14px;top:14px;font-family:var(--serif);font-weight:700;color:#AFC4D4;font-size:20px;">04</div>
+        <div class="badge" style="background:#3E8BA3;left:66px;top:76px;width:80px;height:80px;font-size:34px;color:#fff;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#FFFFFF;fill:none;"><path d="M4 5c2-1 5-1 8 0v14c-3-1-6-1-8 0V5z"/><path d="M20 5c-2-1-5-1-8 0v14c3-1 6-1 8 0V5z"/></svg></div>
+        <div style="position:absolute;left:10px;top:196px;width:193px;font-family:var(--serif);font-weight:700;font-size:16px;">Restore Clarity Through Truth</div>
+      </div>
+      <div style="position:absolute;left:971px;top:178px;width:213px;height:422px;background:var(--navy);border-radius:10px;color:#fff;text-align:center;">
+        <div style="position:absolute;left:14px;top:14px;font-family:var(--serif);font-weight:700;color:#AFC4D4;font-size:20px;">05</div>
+        <div class="badge on-dark" style="left:66px;top:76px;width:80px;height:80px;font-size:34px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M12 3l7 3v6c0 5-3 8.5-7 9-4-.5-7-4-7-9V6l7-3z"/></svg></div>
+        <div style="position:absolute;left:10px;top:196px;width:193px;font-family:var(--serif);font-weight:700;font-size:16px;">Reject Spiritual Pride</div>
+      </div>
+      <div class="pagenum">12</div>
+    </section>
+
+    <!-- ============ Slide 13: Key Details 1-2 ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">Key Details</div>
+      <div class="title" style="left:67px;top:82px;font-size:24px;">Key One: Humility&nbsp;&nbsp;/&nbsp;&nbsp;Key Two: Bless Instead of Accuse</div>
+
+      <div class="card" style="left:67px;top:168px;width:552px;height:470px;">
+        <div class="badge" style="left:29px;top:29px;width:58px;height:58px;font-size:24px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="12" cy="4" r="2"/><path d="M12 6v4"/><path d="M9 20l2-6h2l2 6"/><path d="M9 12c1-1 2-1.5 3-1.5s2 .5 3 1.5"/></svg></div>
+        <h3 style="position:absolute;left:105px;top:36px;font-size:19px;">Humility</h3>
+        <p style="position:absolute;left:29px;top:106px;width:494px;font-size:12.5px;">Wherever pride reigns is fertile ground for Leviathan; the more a person humbles themselves, the weaker its influence. When facing conflict, examine yourself first:</p>
+        <ul class="dots" style="left:29px;top:174px;width:494px;font-size:12.5px;color:var(--text);">
+          <li>Is there pride in me?</li>
+          <li>Is there excessive defensiveness in me?</li>
+          <li>Is there a refusal to be corrected in me?</li>
+          <li>Do I treat my feelings as absolute truth?</li>
+          <li>Am I using spiritual language to cover my hurt?</li>
+        </ul>
+      </div>
+      <div class="card navy" style="left:658px;top:168px;width:552px;height:470px;">
+        <div class="badge teal" style="left:29px;top:29px;width:58px;height:58px;font-size:24px;color:#fff;"><svg class="icon" viewBox="0 0 24 24" style="fill:#FFFFFF;stroke:none"><path d="M12 21s-7-4.5-9.5-9C1 8 2.5 4.5 6 4c2 0 3.5 1 6 3.5C14.5 5 16 4 18 4c3.5.5 5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+        <h3 style="position:absolute;left:105px;top:36px;font-size:19px;width:400px;">Bless Instead of Accuse</h3>
+        <p style="position:absolute;left:29px;top:106px;width:494px;font-size:13.5px;">When others reject, misunderstand, or slander us, the natural response is to defend, attack back, and prove we're right — but this only leads to a vicious cycle. We must learn to bless those who curse us, cutting off the cycle and guarding our hearts.</p>
+        <div class="quote" style="position:absolute;left:29px;top:378px;width:494px;font-size:14px;color:#fff;">When the fight can't get started, Leviathan has nothing to work with.</div>
+      </div>
+      <div class="pagenum">13</div>
+    </section>
+
+    <!-- ============ Slide 14: Key Details 3-5 ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">Key Details</div>
+      <div class="title" style="left:67px;top:82px;font-size:32px;">Keys Three to Five</div>
+
+      <div class="card" style="left:67px;top:168px;width:368px;height:470px;">
+        <div class="badge" style="left:24px;top:19px;width:58px;height:58px;font-size:24px;"><svg class="icon" viewBox="0 0 24 24" style="fill:#C99A2E;stroke:none"><path d="M12 3c2 3-3 5-3 9a3 3 0 0 0 6 0c0-1.5-1-2.5-1-2.5 1.5 2 .5 4-2 4-2.8 0-5-2.2-5-5C7 6 9 4 12 3z"/></svg></div>
+        <h3 style="position:absolute;left:96px;top:22px;font-size:16px;width:250px;">Stop Feeding the Fire</h3>
+        <ul class="dots" style="left:24px;top:105px;width:320px;font-size:12.5px;color:var(--text);">
+          <li style="margin-bottom:38px;">Don't forward unverified information</li>
+          <li style="margin-bottom:38px;">Don't escalate conflicts or add fuel</li>
+          <li>Don't spread spiritual gossip or every word</li>
+        </ul>
+      </div>
+      <div class="card" style="left:449px;top:168px;width:368px;height:470px;">
+        <div class="badge" style="left:24px;top:19px;width:58px;height:58px;font-size:24px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M4 5c2-1 5-1 8 0v14c-3-1-6-1-8 0V5z"/><path d="M20 5c-2-1-5-1-8 0v14c3-1 6-1 8 0V5z"/></svg></div>
+        <h3 style="position:absolute;left:96px;top:22px;font-size:16px;width:250px;">Restore Clarity Through Truth</h3>
+        <ul class="dots" style="left:24px;top:105px;width:320px;font-size:12.5px;color:var(--text);">
+          <li style="margin-bottom:38px;">Return to facts, Scripture, face-to-face talk</li>
+          <li style="margin-bottom:38px;">Don't speculate on others' motives</li>
+          <li>Don't let third parties dictate the relationship</li>
+        </ul>
+      </div>
+      <div class="card" style="left:831px;top:168px;width:368px;height:470px;">
+        <div class="badge" style="left:24px;top:19px;width:58px;height:58px;font-size:24px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><path d="M12 3l7 3v6c0 5-3 8.5-7 9-4-.5-7-4-7-9V6l7-3z"/></svg></div>
+        <h3 style="position:absolute;left:96px;top:22px;font-size:16px;width:250px;">Reject Spiritual Pride</h3>
+        <ul class="dots" style="left:24px;top:105px;width:320px;font-size:12.5px;color:var(--text);">
+          <li style="margin-bottom:38px;">&ldquo;I heard from God, I don't need testing&rdquo;</li>
+          <li style="margin-bottom:38px;">&ldquo;I'm more spiritual than my leader&rdquo;</li>
+          <li>A prophet is human, and needs to be tested</li>
+        </ul>
+      </div>
+      <div class="pagenum">14</div>
+    </section>
+
+    <!-- ============ Slide 15: Discussion Questions ============ -->
+    <section class="slide light">
+      <div class="kicker" style="left:67px;top:48px;">VII. Discussion &amp; Application</div>
+      <div class="title" style="left:67px;top:82px;font-size:32px;">Group Discussion Questions</div>
+      <div class="badge" style="background:var(--card);color:var(--navy);left:1046px;top:72px;width:96px;height:96px;font-size:40px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#0B3D5C;fill:none;"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg></div>
+
+      <div style="position:absolute;left:67px;top:187px;display:flex;gap:16px;align-items:flex-start;width:1142px;">
+        <div style="width:48px;height:48px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;flex-shrink:0;">1</div>
+        <p style="margin:6px 0 0;font-size:15px;">Think back to a recent time you were seriously misunderstood: was your response more like &ldquo;normal friction&rdquo; or the &ldquo;Leviathan pattern&rdquo;?</p>
+      </div>
+      <div style="position:absolute;left:67px;top:281px;display:flex;gap:16px;align-items:flex-start;width:1142px;">
+        <div style="width:48px;height:48px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;flex-shrink:0;">2</div>
+        <p style="margin:6px 0 0;font-size:15px;">In marriage, family, ministry, or an intercessory team, have I experienced the cycle of &ldquo;the more I explain, the deeper the misunderstanding&rdquo;? How did I handle it?</p>
+      </div>
+      <div style="position:absolute;left:67px;top:379px;display:flex;gap:16px;align-items:flex-start;width:1142px;">
+        <div style="width:48px;height:48px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;flex-shrink:0;">3</div>
+        <p style="margin:6px 0 0;font-size:15px;">Reading Job 41:15-17, &ldquo;The Anatomy of Pride&rdquo; — is there any part of me &ldquo;shut up together,&rdquo; refusing correction?</p>
+      </div>
+      <div style="position:absolute;left:67px;top:465px;display:flex;gap:16px;align-items:flex-start;width:1142px;">
+        <div style="width:48px;height:48px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;flex-shrink:0;">4</div>
+        <p style="margin:6px 0 0;font-size:15px;">Of the five self-examination questions, which one challenges me the most?</p>
+      </div>
+      <div style="position:absolute;left:67px;top:549px;display:flex;gap:16px;align-items:flex-start;width:1142px;">
+        <div style="width:48px;height:48px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;flex-shrink:0;">5</div>
+        <p style="margin:6px 0 0;font-size:15px;">&ldquo;Bless instead of accuse&rdquo; and &ldquo;stop feeding the fire&rdquo; — how can I practice these two keys this week?</p>
+      </div>
+      <div class="pagenum">15</div>
+    </section>
+
+    <!-- ============ Slide 16: Summary + Closing Prayer ============ -->
+    <section class="slide dark">
+      <div class="kicker" style="left:67px;top:48px;">Summary</div>
+      <div style="position:absolute;left:67px;top:110px;width:1142px;font-family:var(--serif);font-weight:700;font-size:22px;color:var(--gold);">Twists Words &middot; Stirs Pride &middot; Sows Strife &middot; Breaks Covenants &middot; Attacks Unity</div>
+      <div style="position:absolute;left:67px;top:178px;width:1142px;font-size:16px;color:#E4ECF2;line-height:1.5;">True spiritual maturity is not only about pointing out Leviathan's work in others, but being willing to let the Holy Spirit shine light on our own hearts. When we — and the church — live in truth and humility, Leviathan loses its most important foothold.</div>
+
+      <div style="position:absolute;left:67px;top:302px;width:1142px;height:336px;background:#10293D;border:1px solid #234A63;border-radius:10px;">
+        <div class="badge on-dark" style="left:30px;top:32px;width:67px;height:67px;font-size:28px;"><svg class="icon" viewBox="0 0 24 24" style="stroke:#C99A2E;fill:none;"><circle cx="12" cy="4" r="2"/><path d="M12 6v4"/><path d="M9 20l2-6h2l2 6"/><path d="M9 12c1-1 2-1.5 3-1.5s2 .5 3 1.5"/></svg></div>
+        <div style="position:absolute;left:120px;top:48px;color:var(--gold);font-family:var(--serif);font-weight:700;font-size:19px;">Closing Prayer</div>
+        <div class="quote" style="position:absolute;left:30px;top:120px;width:1085px;font-size:17px;color:#fff;line-height:1.5;">Father, we pray in this critical season of spiritual warfare: guard us from being divided by pride, by the noise of public opinion, or by any work of the enemy's division — in our families, and in our nations. Take control, Lord; bless us to understand Your word and live it out, walking in righteousness and holiness, in love and gentleness. In Jesus' name, Amen!</div>
+      </div>
+      <div class="pagenum">16</div>
+    </section>
+
+  </div>
+</div>
+
+</body>
+</html>
